@@ -2,6 +2,10 @@ package api.payload;
 
 public class User {
 
+
+	// Gather variables from response details in Petstore API
+	// Create those variables in the class
+
 	int id;
 	String username;
 	String firstName;
@@ -10,8 +14,10 @@ public class User {
 	String password;
 	String phone;
 	int userStatus=0;
-	
-	
+
+
+	//  Create Getter and Setter methods for this variables
+
 	public int getId() {
 		return id;
 	}

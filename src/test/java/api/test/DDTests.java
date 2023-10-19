@@ -10,12 +10,13 @@ import io.restassured.response.Response;
 
 public class DDTests {
 
-	
-	@Test(priority=1, dataProvider="Data", dataProviderClass=DataProviders.class )
+	// // we have to specify which data  provider is giving the data to this test method "Data" // we have to specify where exactly the data  provider method is coming from dataProviderClass=DataProviders.class
+	@Test(priority=1, dataProvider="Data", dataProviderClass= DataProviders.class )  //  we have to create multiple parameters should be the same order
 	public void testPostuser(String userID, String userName,String fname,String lname,String useremail,String pwd,String ph)
 	{
+		//Create object for POJO class
 		User userPayload=new User();
-		
+
 		userPayload.setId(Integer.parseInt(userID));
 		userPayload.setUsername(userName);
 		userPayload.setFirstName(fname);
@@ -23,20 +24,20 @@ public class DDTests {
 		userPayload.setEmail(useremail);
 		userPayload.setPassword(pwd);
 		userPayload.setPhone(ph);
-		
-		Response response=UserEndPoints.createUser(userPayload);
+
+		Response response= UserEndPoints.createUser(userPayload);
 		Assert.assertEquals(response.getStatusCode(),200);
-			
 	}
-	
+
+	// DELETE USER
 	@Test(priority=2, dataProvider="UserNames", dataProviderClass=DataProviders.class)
 	public void testDeleteUserByName(String userName)
 	{
-			Response response=UserEndPoints.deleteUser(userName);
-			Assert.assertEquals(response.getStatusCode(),200);	
-	
+		Response response=UserEndPoints.deleteUser(userName);
+		Assert.assertEquals(response.getStatusCode(),200);
+
 	}
-	
-	
-	
+
+
+
 }
