@@ -25,7 +25,7 @@ public class UserEndPoints2 {
 	
 		public static Response createUser(User payload)
 		{
-			String post_url=getURL().getString("post_url");
+			String post_url=getURL().getString("post_url");  // this is a statement which get url from property file
 			
 			
 			Response response=given()
